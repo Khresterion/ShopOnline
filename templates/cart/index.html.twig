@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier
+{% endblock %}
+
+{% block content %}
+	<h1>Mon panier</h1>
+	Retrouvez l'ensemble des produits que vous avez ajouté à votre panier.
+	{% if cart|length > 0 %}
+		<table class="table table-striped table-hover mt-3">
+			<thead>
+				<tr>
+					<th scope="col">Produit</th>
+					<th scope="col"></th>
+					<th scope="col">Quantité</th>
+					<th scope="col">Prix</th>
+					<th scope="col">Total</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set total = null %}
+				{% for product in cart %}
+					<tr>
+						<th>
+							<img class="img img-cart" src="/uploads/{{ product.product.illustration }}" alt="{{product.product.name}}"><br/>
+						</th>
+						<td>
+							{{ product.product.name}}
+							<br>
+							<small>{{ product.product.subtitle}}</small>
+						</td>
+						<td>
+							<a class="js-like" href="{{ path('decrease_to_cart', { 'id' : product.product.id }) }}">
+								<i class="quantity fas fa-minus fa-xs" title="Diminuer la quantité"></i>
+							</a>
+							{{ product.quantity }}
+							<a class="js-like" href="{{ path('add_to_cart', { 'id' : product.product.id }) }}">
+								<i class="quantity fas fa-plus fa-xs" title="Augmenter la quantité"></i>
+							</a>
+						</td>
+						<td>{{ (product.product.price / 100)|number_format(2, ',', '.') }}
+							€</td>
+						<td>{{ ((product.product.price * product.quantity)/ 100)|number_format(2, ',', '.') }}
+							€</td>
+						<td>
+							<a class="js-like" href="{{ path('delete_to_cart', { 'id' : product.product.id })}}">
+								<i class="quantity fas fa-trash-alt" title="Supprimer ce produit du panier"></i>
+							</a>
+						</td>
+					</tr>
+					{% set total = total + (product.product.price * product.quantity) %}
+				{% endfor %}
+			</tbody>
+		</table>
+		<div class="text-right mb-5">
+			<b>Total produits :</b>
+			{{ cart|length }}
+			<br>
+			<b>Total panier :</b>
+			{{ (total / 100)|number_format(2, ',', '.') }}
+			€
+			<br>
+			<a class="btn btn-success btn-block mt-3" href="{{path('order')}}">Valider mon panier</a>
+		</div>
+	{% else %}
+		<hr>
+		<p>
+			<b>Votre panier est vide</b>
+		</p>
+	{% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<script>/*function onClickCart(event) {
+event.preventDefault();
+
+const url = this.href;
+const productCount = this.querySelector('i.quantity')
+
+axios.get(url).then(function (response) {
+console.log(response)
+}).catch(function (error) {
+console.error(error);
+})
+}
+
+document.querySelectorAll('.js-like').forEach(function (link) {
+link.addEventListener('click', onClickCart);
+})*/</script>{% endblock %}
