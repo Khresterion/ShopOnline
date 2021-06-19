@@ -24,5 +24,15 @@
 
 		</div>
 	</div>
+	<hr>
+	<h3 class="text-center">Nos produits à la une</h3>
+	<p class="text-center">Découvez nos articles du moment !</p>
+	<div class="row">
+		{% for product in products %}
+			<div class="col-md-3">
+				{% include 'product/single_product.html.twig' %}
+			</div>
+		{% endfor %}
+	</div><!-- /.row -->
 
 {% endblock %}

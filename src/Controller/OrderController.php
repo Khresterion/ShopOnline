@@ -52,34 +52,35 @@ class OrderController extends AbstractController
             $date = new \DateTime();
             $carriers = $form->get('carriers')->getData();
             $delivery = $form->get('addresses')->getData();
-            $delivery_content = $delivery->getFirstName() . '' . $delivery->getLastName();
+            $delivery_content = $delivery->getFirstName() . " " . $delivery->getLastName();
             $delivery_content .= '<br/>' . $delivery->getPhone();
             if ($delivery->getCompany()) {
                 $delivery_content .= '<br/>' . $delivery->getCompany();
             }
             $delivery_content .= '<br/>' . $delivery->getAddress();
-            $delivery_content .= '<br/>' . $delivery->getPostal() . '' . $delivery->getCity();
+            $delivery_content .= '<br/>' . $delivery->getPostal() . ' ' . $delivery->getCity();
             $delivery_content .= '<br/>' . $delivery->getCountry();
 
-            $order = new Order();
             $reference = $date->format('dmY') . '-' . uniqid();
-            $order->setReference($reference);
-            $order->setUser($this->getUser());
-            $order->setcreatedAt($date);
-            $order->setCarrierName($carriers->getName());
-            $order->setCarrierPrice($carriers->getPrice());
-            $order->setDelivery($delivery_content);
-            $order->setisPaid(0);
+
+            $order = (new Order())
+                ->setReference($reference)
+                ->setUser($this->getUser())
+                ->setcreatedAt($date)
+                ->setCarrierName($carriers->getName())
+                ->setCarrierPrice($carriers->getPrice())
+                ->setDelivery($delivery_content)
+                ->setState(0);
 
             $this->entityManager->persist($order);
 
             foreach ($cart->getFull() as $product) {
-                $orderDetails = new OrderDetails();
-                $orderDetails->setMyOrder($order);
-                $orderDetails->setProduct($product['product']->getName());
-                $orderDetails->setQuantity($product['quantity']);
-                $orderDetails->setPrice($product['product']->getPrice());
-                $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
+                $orderDetails = (new OrderDetails())
+                    ->setMyOrder($order)
+                    ->setProduct($product['product']->getName())
+                    ->setQuantity($product['quantity'])
+                    ->setPrice($product['product']->getPrice())
+                    ->setTotal($product['product']->getPrice() * $product['quantity']);
                 $this->entityManager->persist($orderDetails);
             }
             $this->entityManager->flush();
