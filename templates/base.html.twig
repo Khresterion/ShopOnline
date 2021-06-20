@@ -7,8 +7,7 @@
 		<meta name="author" content="Khresterion">
 		<meta name="generator" content="Jekyll v4.1.1">
 		<title>
-			{% block title %}PmoPc - Boutique
-			{% endblock %}
+			{% block title %}E-shop Branding{% endblock %}
 		</title>
 
 		<!-- Bootstrap core CSS -->
@@ -37,8 +36,8 @@
 	</head>
 	<body>
 		<header>
-			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-				<a class="navbar-brand" href="{{ path('home')}}">Shop du Musée</a>
+			<nav class="autohide navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="navbar">
+				<a class="navbar-brand" href="{{ path('home')}}">Logo</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -48,10 +47,10 @@
 							<a class="nav-link" href="{{ path('products') }}">Nos produits</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="">Qui sommes-nous ?</a>
+							<a class="nav-link" href="{{ path('history')}}">Qui sommes-nous ?</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="">Contact</a>
+							<a class="nav-link" href="{{ path('contact') }}">Contact</a>
 						</li>
 					</ul>
 					{# <form class="form-inline mt-2 mt-md-0">
@@ -77,7 +76,7 @@
 		<main role="main">
 
 			{% if block('carousel') is defined %}
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 					<ol class="carousel-indicators">
 						{% for key,header in headers %}
 						<li data-target="#myCarousel" data-slide-to="{{ key }}" {% if key == 0 %} class="active"> {% endif %}</li>
@@ -146,21 +145,47 @@
 
 			</main>
 			<!-- FOOTER -->
-			<footer class="footer-custom">
-				<p>
-					&copy; 2021 Pocket Museum of POP Culture
-					<br>
-					<small>
-						<a href="#">Privacy</a>
-						<a href="#">Terms</a>
-						<a href="#">SiteMap</a>
-					</small>
-				</p>
+			<footer>
+				<section class="footer-merch text-center">
+					<div class="merch">
+						<i class="fas fa-lock fa-3x mb-2"></i>
+						<p class="desc-merch">Paiement sécurisé</p>
+						<p>infos</p>
+					</div>
+					<div class="merch">
+						<i class="fas fa-phone fa-3x mb-2"></i>
+						<p class="desc-merch">Téléphone</p>
+						<p>infos</p>
+					</div>
+					<div class="merch">
+						<i class="fas fa-truck fa-3x mb-2"></i>
+						<p class="desc-merch">Livraison</p>
+						<p>infos</p>
+					</div>
+					<div class="merch">
+						<i class="fas fa-undo fa-3x mb-2"></i>
+						<p class="desc-merch">Retours gratuits</p>
+						<p>infos</p>
+					</div>
+				</section>
+				<section class="footer-custom">
+					<p>
+						&copy; 2021 Pocket Museum of POP Culture
+						<br>
+						<small>
+							<a href="#">Privacy</a>
+							<a href="#">Terms</a>
+							<a href="#">SiteMap</a>
+						</small>
+					</p>
+				</section>
 			</footer>
+			
 			{% block javascripts %}
 				<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 				<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
 				<script src="https://js.stripe.com/v3/"></script>
+				<script src="{{asset('assets/js/script.js')}}"></script>
 			{% endblock %}
 
 		</body>

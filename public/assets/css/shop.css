@@ -10,9 +10,40 @@ body {
   padding: 0; */
 }
 
+body {
+  background: url(../../images/BGwhite.jpg) center;
+  background-size: stretch;
+}
+
 .navbar-item-custom,
 .navbar-item-custom a {
   color: #fff;
+}
+
+.footer-merch {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* width: 100%; */
+  /* position: fixed; */
+  background-color: lightgray;
+  margin-top: 1em;
+  /* height: 20vh; */
+  margin: 0 3em;
+  padding-top: 2em;
+}
+
+.merch {
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: column; */
+}
+.desc-merch {
+  text-transform: uppercase;
+  font-size: small;
+  letter-spacing: 0.2em;
+  font-weight: bold;
 }
 
 .footer-custom {
@@ -21,9 +52,10 @@ body {
   justify-content: center;
   /* width: 100%; */
   /* position: fixed; */
-  background-color: #dfeaff;
+  background-color: #2e2e2e;
   margin-top: 1em;
-  height: 10vh;
+  height: 15vh;
+  margin: 0 3em;
 }
 
 .product-item h5 {
@@ -96,6 +128,7 @@ body {
   background-color: #dfeaff;
   padding: 1em 3em;
   margin-top: 0.5em;
+  border-radius: 10px;
 }
 
 .col-form-label {
@@ -107,4 +140,55 @@ body {
   background-color: #dfeaff;
   padding: 1em;
   margin-top: 0.5em;
+}
+
+.account-item {
+  background-color: #f1f2f6;
+  padding: 4em;
+  transition: all 0.3s ease-in 0s;
+  border-radius: 20px;
+}
+
+.account-item a {
+  color: #4b6584;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: small;
+}
+
+.account-item:hover {
+  background-color: #afb0b3;
+}
+
+.scrolled-down {
+  transform: translateY(-100%);
+  transition: all 0.3s ease-in-out;
+}
+.scrolled-up {
+  transform: translateY(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.img-anim {
+  transition: all 600ms ease;
+  -webkit-transition: all 600ms ease;
+  -moz-transition: all 600ms ease;
+}
+
+.img-anim:hover {
+  transform: scale(0.95);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 425px) {
+  .card-account {
+    margin-bottom: 1em;
+  }
+  .footer-custom {
+    margin: 0;
+  }
+  .footer-merch {
+    display: none;
+  }
 }

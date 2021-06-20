@@ -4,11 +4,35 @@
 
 {% block content %}
 <h1>Mon Compte</h1>
-Bienvenue {{app.user.firstname}} ! </br>
+Bienvenue {{app.user.firstname}} ! </br> <br>
+{% if is_granted('ROLE_ADMIN') %}
+<a class="btn btn-success btn-sm" href="/admin">Acces admin</a> <br>
+{% endif %}
+
 <hr>
-<a href="{{ path('account_password') }}">- Modifier votre mot de passe</a> <br>
-<a href="{{ path('account_address') }}">- Gérer mes adresses</a> <br>
-<a href="{{ path('account_order') }}">- Mes commandes</a>
+
+<div class="row text-center">
+    <div class="col-md-4 card-account">
+        <div class="account-item">
+            <i class="fas fa-user-lock fa-2x"></i> <br>
+            <a href="{{ path('account_password') }}">Modifier votre mot de passe</a>
+        </div>
+    </div>
+    <div class="col-md-4 card-account">
+        <div class="account-item">
+            <i class="fas fa-address-book fa-2x"></i> <br>
+            <a href="{{ path('account_address') }}">Gérer mes adresses</a>
+        </div>
+    </div>
+    <div class="col-md-4 card-account">
+        <div class="account-item">
+            <i class="fas fa-shopping-bag fa-2x"></i> <br>
+            <a href="{{ path('account_order') }}">Mes commandes</a>
+        </div>
+    </div>
+</div>
+
+
 
 <hr>
 {% endblock %}
