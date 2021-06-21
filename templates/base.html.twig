@@ -35,7 +35,14 @@
 		<link href="{{asset('assets/css/carousel.css')}}" rel="stylesheet">
 	</head>
 	<body>
+		<div class="scroll-top-wrapper ">
+			<span class="scroll-top-inner">
+				<i class="fa fa-2x fa-arrow-circle-up"></i>
+			</span>
+		</div>
+		 
 		<header>
+			<!-- <button onclick="topFunction()" id="myBtn" title="Retour en Haut"></button> -->
 			<nav class="autohide navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="navbar">
 				<a class="navbar-brand" href="{{ path('home')}}">Logo</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -182,7 +189,7 @@
 			</footer>
 			
 			{% block javascripts %}
-				<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+				<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 				<script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script>
 				<script src="https://js.stripe.com/v3/"></script>
 				<script src="{{asset('assets/js/script.js')}}"></script>

@@ -3,10 +3,6 @@ $(".carousel").carousel({
   interval: 8000,
 });
 
-window.onscroll = function () {
-  scrollFunction();
-};
-
 // Navbar cachée en scrollant vers le bas
 document.addEventListener("DOMContentLoaded", function () {
   el_autohide = document.querySelector(".autohide");
@@ -33,3 +29,35 @@ document.addEventListener("DOMContentLoaded", function () {
   // if
 });
 // DOMContentLoaded  end
+
+// SCROLL TO TOP
+
+$(function () {
+  $(document).on("scroll", function () {
+    if ($(window).scrollTop() > 100) {
+      $(".scroll-top-wrapper").addClass("show");
+    } else {
+      $(".scroll-top-wrapper").removeClass("show");
+    }
+  });
+});
+
+$(function () {
+  $(document).on("scroll", function () {
+    if ($(window).scrollTop() > 100) {
+      $(".scroll-top-wrapper").addClass("show");
+    } else {
+      $(".scroll-top-wrapper").removeClass("show");
+    }
+  });
+
+  $(".scroll-top-wrapper").on("click", scrollToTop);
+});
+
+function scrollToTop() {
+  verticalOffset = typeof verticalOffset != "undefined" ? verticalOffset : 0;
+  element = $("body");
+  offset = element.offset();
+  offsetTop = offset.top;
+  $("html, body").animate({ scrollTop: offsetTop }, 500, "linear");
+}
