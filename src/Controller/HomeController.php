@@ -19,8 +19,10 @@ class HomeController extends AbstractController
     {
         $this->entityManager = $entityManager;
     }
-
-    #[Route('/', name: 'home')]
+    /**
+     * @Route("/", name="home")
+     */
+    // #[Route('/', name: 'home')]
     public function index(): Response
     {
         $products = $this->entityManager->getRepository(Product::class)->findBy(['isBest' => 1]);
