@@ -1,6 +1,6 @@
 // Carousel interval 8 sec
 $(".carousel").carousel({
-  interval: 8000,
+  interval: 5000,
 });
 
 // Navbar cachée en scrollant vers le bas

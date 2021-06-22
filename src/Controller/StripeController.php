@@ -18,7 +18,7 @@ class StripeController extends AbstractController
     /**
      * @Route("/commande/create-session/{reference}", name="stripe_create_session")
      */
-    #[Route("/commande/create-session/{reference}", name: 'stripe_create_session')]
+    // #[Route("/commande/create-session/{reference}", name: 'stripe_create_session')]
     public function index(EntityManagerInterface $entityManager, Cart $cart, $reference)
     {
         $product_for_stripe = [];
@@ -39,7 +39,7 @@ class StripeController extends AbstractController
                     'product_data' => [
                         'name' => $product->getProduct(),
                         // Commenter upload en dev
-                        'images' => [$YOUR_DOMAIN . "/uploads/" . $product_object->getIllustration()],
+                        'images' => [$YOUR_DOMAIN /*. "/uploads/" . $product_object->getIllustration()*/],
                     ],
                 ],
                 'quantity' => $product->getQuantity(),
