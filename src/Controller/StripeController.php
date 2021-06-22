@@ -15,6 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class StripeController extends AbstractController
 {
+    /**
+     * @Route("/commande/create-session/{reference}", name="stripe_create_session")
+     */
     #[Route("/commande/create-session/{reference}", name: 'stripe_create_session')]
     public function index(EntityManagerInterface $entityManager, Cart $cart, $reference)
     {
@@ -35,7 +38,8 @@ class StripeController extends AbstractController
                     'unit_amount' => $product->getPrice(),
                     'product_data' => [
                         'name' => $product->getProduct(),
-                        'images' => [$YOUR_DOMAIN /*. "/uploads/" . $product_object->getIllustration()*/],
+                        // Commenter upload en dev
+                        'images' => [$YOUR_DOMAIN . "/uploads/" . $product_object->getIllustration()],
                     ],
                 ],
                 'quantity' => $product->getQuantity(),

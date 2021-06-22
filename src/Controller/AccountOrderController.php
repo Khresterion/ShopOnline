@@ -18,7 +18,10 @@ class AccountOrderController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/compte/mes-commandes', name: 'account_order')]
+    /**
+     * @Route("/compte/mes-commandes", name="account_order")
+     */
+    // #[Route('/compte/mes-commandes', name: 'account_order')]
     public function index(): Response
     {
 
@@ -29,7 +32,10 @@ class AccountOrderController extends AbstractController
         ]);
     }
 
-    #[Route('/compte/mes-commandes/{reference}', name: 'account_order_show')]
+    /**
+     * @Route("/compte/mes-commandes/{reference}", name="account_order_show")
+     */
+    // #[Route('/compte/mes-commandes/{reference}', name: 'account_order_show')]
     public function show($reference): Response
     {
 

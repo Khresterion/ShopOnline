@@ -21,14 +21,20 @@ class AccountAddressController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    #[Route('/compte/adresses', name: 'account_address')]
+    /**
+     * @Route("/compte/adresses", name="account_address")
+     */
+    // #[Route('/compte/adresses', name: 'account_address')]
     public function index(): Response
     {
 
         return $this->render('account/address.html.twig');
     }
 
-    #[Route('/compte/ajouter_une_adresse', name: 'account_address_add')]
+    /**
+     * @Route("/compte/ajouter_une_adresse", name="account_address_add")
+     */
+    // #[Route('/compte/ajouter_une_adresse', name: 'account_address_add')]
     public function add(Cart $cart, Request $request): Response
     {
         $address = new Address();
@@ -53,7 +59,10 @@ class AccountAddressController extends AbstractController
         ]);
     }
 
-    #[Route('/compte/modifier_une_adresse/{id}', name: 'account_address_edit')]
+    /**
+     * @Route("/compte/modifier_une_adresse/{id}", name="account_address_edit")
+     */
+    // #[Route('/compte/modifier_une_adresse/{id}', name: 'account_address_edit')]
     public function edit(Request $request, $id): Response
     {
         $address = $this->entityManager->getRepository(Address::class)->findOneBy(['id' => $id]);
@@ -78,7 +87,10 @@ class AccountAddressController extends AbstractController
         ]);
     }
 
-    #[Route('/compte/supprimer_une_adresse/{id}', name: 'account_address_delete')]
+    /**
+     * @Route("/compte/supprimer_une_adresse/{id}", name="account_address_delete")
+     */
+    // #[Route('/compte/supprimer_une_adresse/{id}', name: 'account_address_delete')]
     public function delete($id): Response
     {
         $address = $this->entityManager->getRepository(Address::class)->findOneBy(['id' => $id]);
