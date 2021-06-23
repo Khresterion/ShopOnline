@@ -40,10 +40,10 @@ class OrderController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/commande/recapitulatif", name="order_recap", methods="POST")
-     */
-    // #[Route('/commande/recapitulatif', name: 'order_recap', methods: "POST")]
+    // /**
+    //  * @Route("/commande/recapitulatif", name="order_recap", methods="POST")
+    //  */
+    #[Route('/commande/recapitulatif', name: 'order_recap', methods: "POST")]
     public function add(Cart $cart, Request $request): Response
     {
         $form = $this->createForm(OrderType::class, null, [

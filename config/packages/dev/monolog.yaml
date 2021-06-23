@@ -3,16 +3,8 @@ monolog:
         main:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%.log"
-            #path:  "php://stderr"
             level: debug
             channels: ["!event"]
-            handler:      nested
-        nested:
-            type:  stream
-            # Required by Heroku ephemeral filesystem
-            path:  "php://stderr"
-            level: debug
-            
         # uncomment to get logging in your browser
         # you may have to allow bigger header sizes in your Web server configuration
         #firephp:

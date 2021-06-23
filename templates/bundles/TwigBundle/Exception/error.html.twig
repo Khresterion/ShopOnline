@@ -1,1 +1,27 @@
+{% extends 'base.html.twig' %}
 
+{% block title %}Page introuvable{% endblock %}
+
+{% block content %}
+<div class="block-small">
+    <div id="layoutError">
+        <div id="layoutError_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="text-center mt-4">
+                                <img class="mb-4 img-error" src="images/error-404-monochrome.svg" />
+                                <h2>Page introuvable</h2>
+                                <p class="lead">Vous n'êtes pas autorisé à aller sur cette page ou celle-ci n'existe pas</p>
+                                <a class="btn btn-info" href="{{ path('home') }}">Retourner à l'accueil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

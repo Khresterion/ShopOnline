@@ -20,10 +20,10 @@ class AccountPasswordController extends AbstractController
         $this->entityManager = $entityManager;
     }
 
-    /**
-     * @Route("/compte/modifier-mdp", name="account_password")
-     */
-    // #[Route('/compte/modifier-mdp', name: 'account_password')]
+    // /**
+    //  * @Route("/compte/modifier-mdp", name="account_password")
+    //  */
+    #[Route('/compte/modifier-mdp', name: 'account_password')]
     public function index(Request $request, UserPasswordHasherInterface $hasher): Response
     {
 

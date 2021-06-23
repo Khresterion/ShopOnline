@@ -9,10 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HistoryController extends AbstractController
 {
 
-    /**
-     * @Route("/qui-sommes-nous", name="history")
-     */
-    // #[Route('/qui-sommes-nous', name: 'history')]
+    // /**
+    //  * @Route("/qui-sommes-nous", name="history")
+    //  */
+    #[Route('/qui-sommes-nous', name: 'history')]
     public function index(): Response
     {
 
