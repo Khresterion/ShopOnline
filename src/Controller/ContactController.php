@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Class\Mail;
+use App\Classe\Mail;
 use App\Form\ContactType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;

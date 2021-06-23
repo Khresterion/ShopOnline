@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Class\Cart;
+use App\Classe\Cart;
 use App\Entity\Order;
 use App\Entity\OrderDetails;
 use App\Form\OrderType;

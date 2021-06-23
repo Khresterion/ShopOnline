@@ -2,14 +2,14 @@
 
 namespace App\Form;
 
+use App\Classe\Search;
 use App\Entity\Category;
-use App\Class\Search;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\AbstractType;
 use Symfony\component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 class SearchType extends AbstractType
