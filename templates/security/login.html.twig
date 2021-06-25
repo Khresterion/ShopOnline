@@ -20,11 +20,23 @@
         {% endif %}
     
         <h1 class="h3 mb-3 font-weight-normal">Merci de vous connecter</h1>
+
+        <a href="{{ path('connect_google_start')}}" class="btn btn-danger btn-block mb-3">
+            Se connecter avec google
+        </a>
         
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Email" class="form-control mb-3" autocomplete="email" required autofocus>
-        
-        <input type="password" name="password" id="inputPassword" placeholder="Mot de passe" class="form-control mb-3" autocomplete="current-password" required>
-    
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text" id="btnGroupAddon">@</div>
+            </div>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Email" class="form-control my-auto" autocomplete="email" required autofocus>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <div class="input-group-text" id="btnGroupAddon"><i class="fas fa-lock"></i></div>
+        </div>
+        <input type="password" name="password" id="inputPassword" placeholder="Mot de passe" class="form-control my-auto" autocomplete="current-password" required>
+    </div>
         <input type="hidden" name="_csrf_token"
                value="{{ csrf_token('authenticate') }}"
         >
