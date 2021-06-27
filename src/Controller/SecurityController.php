@@ -15,8 +15,25 @@ class SecurityController extends AbstractController
     #[Route('/connexion', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        if ($this->getUser()) {
-            return $this->redirectToRoute('account');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (empty($_POST['g-recaptcha'])) {
+            } else {
+                $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LcPGl0bAAAAAEKU72g-6xBzpLSYSGOhIhb0h7Y2&response={$_POST['g-recaptcha']}";
+            }
+            if (function_exists('curl_version')) {
+                $curl = curl_init($url);
+                curl_setopt($curl, CURLOPT_HEADER, false);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                $response = curl_exec($curl);
+            } else {
+                $response = file_get_contents($url);
+            }
+
+            if ($this->getUser()) {
+                return $this->redirectToRoute('account');
+            }
         }
 
         // get the login error if there is one
