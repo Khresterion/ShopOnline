@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>Mon Compte</h1>
-Bienvenue {{app.user.firstname}} ! </br> <br>
+Bienvenue {{app.user.firstname|escape}} ! </br> <br>
 {% if is_granted('ROLE_ADMIN') %}
 <a class="btn btn-success btn-sm" href="/admin">Acces admin</a> <br>
 {% endif %}

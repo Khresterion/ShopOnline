@@ -1,9 +1,9 @@
-// Carousel interval 8 sec
+// Carousel interval 5 sec
 $(".carousel").carousel({
   interval: 5000,
 });
 
-// Navbar cachée en scrollant vers le bas
+// Navbar hidden when scrolling down
 document.addEventListener("DOMContentLoaded", function () {
   el_autohide = document.querySelector(".autohide");
 
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // DOMContentLoaded  end
 
 // SCROLL TO TOP
-
 $(function () {
   $(document).on("scroll", function () {
     if ($(window).scrollTop() > 100) {

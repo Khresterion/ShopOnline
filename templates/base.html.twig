@@ -15,26 +15,11 @@
 		<link href="{{asset('assets/css/shop.css')}}" rel="stylesheet">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
-		<style>
-			.bd-placeholder-img {
-				font-size: 1.125rem;
-				text-anchor: middle;
-				-webkit-user-select: none;
-				-moz-user-select: none;
-				-ms-user-select: none;
-				user-select: none;
-			}
-
-			@media(min-width: 768px) {
-				.bd-placeholder-img-lg {
-					font-size: 3.5rem;
-				}
-			}
-		</style>
 		<!-- Custom styles for this template -->
 		<link href="{{asset('assets/css/carousel.css')}}" rel="stylesheet">
 	</head>
 	<body>
+		<!-- Scroll to Top button -->
 		<div class="scroll-top-wrapper ">
 			<span class="scroll-top-inner">
 				<i class="fa fa-2x fa-arrow-circle-up"></i>
@@ -42,7 +27,7 @@
 		</div>
 		 
 		<header>
-			<!-- <button onclick="topFunction()" id="myBtn" title="Retour en Haut"></button> -->
+		<!-- NAV -->
 			<nav class="autohide navbar navbar-expand-md navbar-dark fixed-top py-4 bg-dark" id="navbar">
 				<a class="navbar-brand" href="{{ path('home')}}">Logo</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,6 +58,7 @@
 							</ul>
 						  </li>
 					</ul>
+		<!-- SearchBar disabled -->
 					{# <form class="form-inline mt-2 mt-md-0">
 					                <input class="form-control mr-sm-2" type="text" placeholder="Votre recherche..." aria-label="Search">
 					                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
@@ -80,7 +66,7 @@
 					<div class="navbar navbar-item-custom">
 						{% if app.user %}
 							<a href="{{ path('account')}}">Mon Compte
-								<small>({{ app.user.firstname }})</small>
+								<small>({{ app.user.firstname|escape }})</small>
 							</a>&nbsp;|&nbsp;<a href="{{ path('app_logout')}}">Déconnexion</a>
 						{% else %}
 							<a href="{{ path('app_login')}}">Connexion</a>&nbsp;|&nbsp;<a href="{{ path('register')}}">Inscription</a>
@@ -94,7 +80,7 @@
 		</header>
 
 		<main role="main">
-
+		<!-- Carousel -->
 			{% if block('carousel') is defined %}
 				<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
 					<ol class="carousel-indicators">
@@ -115,6 +101,7 @@
 								</div>
 							</div>
 						</div>
+		<!-- Style carousel disabled -->
 						<!-- <div class="carousel-item">
 							<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
 							<div class="container">
@@ -164,7 +151,7 @@
 
 
 			</main>
-			<!-- FOOTER -->
+		<!-- FOOTER first Bloc -->
 			<footer>
 				<section class="footer-merch text-center">
 					<div class="merch">
@@ -188,6 +175,7 @@
 						<p>infos</p>
 					</div>
 				</section>
+		<!-- FOOTER second Bloc -->
 				<section class="footer-custom">
 					<p>
 						&copy; 2021 Pocket Museum of POP Culture
